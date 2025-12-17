@@ -1,0 +1,47 @@
+# Site Settings
+title: Pravallika Pasala
+description: ML Engineer | RAG Systems & LLM Applications | Seeking Remote Opportunities
+author: Pravallika Pasala
+
+# Theme
+theme: jekyll-theme-cayman
+
+# Cayman theme customization
+cayman:
+  button1:
+    name: View Projects
+    url: "#-featured-projects"
+  button2:
+    name: Contact Me
+    url: "#-lets-connect"
+
+# Social links (used by theme)
+github_username: Prav-allika
+linkedin_username: pasala-pravallika0338491b8
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# SEO
+lang: en
+url: "https://prav-allika.github.io"
+baseurl: ""
+
+# Google Analytics (optional - add your tracking ID if you want)
+# google_analytics: UA-XXXXXXXXX-X
