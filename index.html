@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pravallika Pasala | ML Engineer</title>
+<meta name="description" content="ML Engineer specializing in RAG Systems, LLM Applications & Multi-Agent AI. 3 years at PwC building production AI for Fortune 500 clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg2: #11111a;
+    --bg3: #181824;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #e8e6f0;
+    --muted: #8b89a0;
+    --accent: #7c6af7;
+    --accent2: #4ecdc4;
+    --accent3: #ff6b6b;
+    --green: #56d98a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid noise texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,106,247,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,106,247,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 0;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner {
+    max-width: 900px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    padding: 160px 0 100px;
+    position: relative;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,106,247,0.1);
+    border: 1px solid rgba(124,106,247,0.25);
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(40px, 7vw, 72px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+  h1 .line2 { color: var(--accent); }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover { background: #6a5ae0; }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border2);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-num span { color: var(--accent); }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* SECTION HEADERS */
+  section { padding: 80px 0; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 48px;
+  }
+
+  /* PROJECTS */
+  .projects-grid { display: flex; flex-direction: column; gap: 24px; }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-card.featured { border-color: rgba(124,106,247,0.3); }
+  .project-card.featured::before { opacity: 1; }
+
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; gap: 16px; }
+  .card-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(124,106,247,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(124,106,247,0.2);
+    white-space: nowrap;
+  }
+  .card-badge.live {
+    background: rgba(86,217,138,0.1);
+    color: var(--green);
+    border-color: rgba(86,217,138,0.2);
+  }
+  .card-links { display: flex; gap: 8px; flex-shrink: 0; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .card-link:hover { color: var(--text); border-color: var(--border2); }
+  .card-link svg { width: 12px; height: 12px; }
+
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .card-metrics {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--bg3);
+    border-radius: 10px;
+  }
+  .metric { font-size: 13px; }
+  .metric-val { color: var(--accent2); font-family: 'DM Mono', monospace; font-weight: 500; }
+  .metric-label { color: var(--muted); margin-left: 4px; }
+
+  .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tech-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: var(--bg3);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .skill-group {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-item {
+    font-size: 13px;
+    color: var(--muted);
+    background: var(--bg3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .exp-role { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; }
+  .exp-company { color: var(--accent); }
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    padding: 5px 12px;
+    background: var(--bg3);
+    border-radius: 999px;
+    border: 1px solid var(--border);
+  }
+  .exp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .exp-list li {
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .exp-list li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+  .exp-list strong { color: var(--text); font-weight: 500; }
+
+  .clients-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+  .client-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--bg3);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .contact-label { font-size: 12px; color: var(--muted); margin-bottom: 2px; font-family: 'DM Mono', monospace; }
+  .contact-val { font-size: 13px; color: var(--text); font-weight: 500; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+  }
+  footer p { font-size: 13px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+  @media (max-width: 600px) {
+    .hero-stats { gap: 24px; }
+    .card-top { flex-direction: column; }
+    .card-links { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a class="nav-logo" href="#">P<span>.</span>Pravallika</a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+  <section class="hero">
+    <div class="hero-tag">
+      <span class="dot"></span>
+      Open to Remote Opportunities
+    </div>
+    <h1>
+      ML Engineer<br>
+      <span class="line2">Building AI that ships.</span>
+    </h1>
+    <p class="hero-sub">
+      3 years at PwC building production AI/ML systems for <strong>Fortune 500 clients</strong>.
+      Specializing in <strong>RAG pipelines, multi-agent systems,</strong> and <strong>LLM applications</strong>
+      — from architecture to HuggingFace deployment.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="mailto:pravallipasala@gmail.com" class="btn btn-outline">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Years at PwC</div>
+      </div>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">Live ML Apps</div>
+      </div>
+      <div>
+        <div class="stat-num">50<span>TB+</span></div>
+        <div class="stat-label">Data Processed</div>
+      </div>
+      <div>
+        <div class="stat-num">3</div>
+        <div class="stat-label">Fortune 500 Clients</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">// projects</div>
+    <h2>Live ML Applications</h2>
+    <div class="projects-grid">
+
+      <!-- SafeRoute AI -->
+      <div class="project-card featured">
+        <div class="card-top">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="card-badge live">● Live</span>
+            <span class="card-badge">Multi-Agent</span>
+          </div>
+          <div class="card-links">
+            <a href="https://huggingface.co/spaces/Prav04/saferout-ai" class="card-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Demo
+            </a>
+            <a href="https://github.com/Prav-allika/saferoute-ai" class="card-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="card-title">SafeRoute AI — Multi-Agent Real-Time Safety System</div>
+        <p class="card-desc">3-agent orchestration system (ML Predictor · Emergency Responder · Route Analyzer) running in parallel via LangGraph. Predicts failures 48 hours in advance with 99.8% accuracy, executes automated 5-step emergency protocol, and maintains sub-500ms response latency end-to-end.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-val">99.8%</span><span class="metric-label">failure prediction accuracy</span></div>
+          <div class="metric"><span class="metric-val">48 hrs</span><span class="metric-label">advance prediction window</span></div>
+          <div class="metric"><span class="metric-val">&lt;500ms</span><span class="metric-label">end-to-end latency</span></div>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">LangGraph</span>
+          <span class="tech-tag">ThreadPoolExecutor</span>
+          <span class="tech-tag">Random Forest</span>
+          <span class="tech-tag">Ollama</span>
+          <span class="tech-tag">Groq</span>
+          <span class="tech-tag">Streamlit</span>
+        </div>
+      </div>
+
+      <!-- Multi-PDF RAG -->
+      <div class="project-card">
+        <div class="card-top">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="card-badge live">● Live</span>
+            <span class="card-badge">RAG · LLM</span>
+          </div>
+          <div class="card-links">
+            <a href="https://huggingface.co/spaces/Prav04/rag-chatbot" class="card-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Demo
+            </a>
+            <a href="https://github.com/Prav-allika/rag-chatbot" class="card-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="card-title">RAG Agent System — Production Document AI</div>
+        <p class="card-desc">End-to-end multi-PDF RAG pipeline with FAISS vector search across 10K+ chunks. Features a 3-tier LLM fallback chain (Groq → OpenAI → FLAN-T5), source attribution, chat history, and local hosting with no API key required. 10× faster than baseline.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-val">10K+</span><span class="metric-label">chunks indexed</span></div>
+          <div class="metric"><span class="metric-val">~1s</span><span class="metric-label">response time</span></div>
+          <div class="metric"><span class="metric-val">10×</span><span class="metric-label">faster than baseline</span></div>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">LangChain LCEL</span>
+          <span class="tech-tag">LangGraph</span>
+          <span class="tech-tag">FAISS</span>
+          <span class="tech-tag">Groq API</span>
+          <span class="tech-tag">Sentence-Transformers</span>
+          <span class="tech-tag">Gradio</span>
+          <span class="tech-tag">FastAPI</span>
+        </div>
+      </div>
+
+      <!-- LLM Comparison Dashboard -->
+      <div class="project-card">
+        <div class="card-top">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="card-badge live">● Live</span>
+            <span class="card-badge">Analytics</span>
+          </div>
+          <div class="card-links">
+            <a href="https://huggingface.co/spaces/Prav04/llm-comparison-dashboard" class="card-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+              Demo
+            </a>
+            <a href="https://github.com/Prav-allika/llm-comparison-dashboard" class="card-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0112 6.8c.85.004 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        <div class="card-title">LLM Comparison Dashboard</div>
+        <p class="card-desc">Benchmarked 3 GPT-2 variants across 5 NLP metrics with 40% faster inference via ThreadPoolExecutor parallelism. DistilBERT achieves 89% accuracy. All 100+ benchmark sessions tracked persistently in SQLite with interactive Plotly visualizations.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-val">40%</span><span class="metric-label">faster inference</span></div>
+          <div class="metric"><span class="metric-val">89%</span><span class="metric-label">DistilBERT accuracy</span></div>
+          <div class="metric"><span class="metric-val">100+</span><span class="metric-label">sessions tracked</span></div>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Streamlit</span>
+          <span class="tech-tag">HuggingFace Transformers</span>
+          <span class="tech-tag">GPT-2</span>
+          <span class="tech-tag">DistilBERT</span>
+          <span class="tech-tag">Plotly</span>
+          <span class="tech-tag">SQLite</span>
+        </div>
+      </div>
+
+      <!-- SAP ABAP -->
+      <div class="project-card">
+        <div class="card-top">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span class="card-badge" style="background:rgba(255,107,107,0.1);color:#ff6b6b;border-color:rgba(255,107,107,0.2);">🔒 Internal Tool</span>
+            <span class="card-badge">Code Analysis · PwC</span>
+          </div>
+        </div>
+        <div class="card-title">SAP ABAP Code Analyzer</div>
+        <p class="card-desc">AI classification pipeline using LangChain + GPT-4o with a deterministic override layer to assess legacy ABAP codebases for SAP S/4HANA migration. Engineered a 4-level token-aware fallback system — reducing consultant assessment time from weeks to minutes.</p>
+        <div class="card-metrics">
+          <div class="metric"><span class="metric-val">Weeks → mins</span><span class="metric-label">assessment time reduction</span></div>
+          <div class="metric"><span class="metric-val">4-level</span><span class="metric-label">token-aware fallback</span></div>
+          <div class="metric"><span class="metric-val">Zero</span><span class="metric-label">pipeline failures</span></div>
+        </div>
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">LLM</span>
+          <span class="tech-tag">SAP ABAP</span>
+          <span class="tech-tag">Streamlit</span>
+          <span class="tech-tag">Gradio</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">// skills</div>
+    <h2>Technical Stack</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title">LLM & RAG</div>
+        <div class="skill-list">
+          <span class="skill-item">LangChain</span>
+          <span class="skill-item">LangGraph</span>
+          <span class="skill-item">RAG Pipelines</span>
+          <span class="skill-item">FAISS</span>
+          <span class="skill-item">Groq</span>
+          <span class="skill-item">Ollama</span>
+          <span class="skill-item">Prompt Engineering</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">ML & Deep Learning</div>
+        <div class="skill-list">
+          <span class="skill-item">PyTorch</span>
+          <span class="skill-item">Scikit-learn</span>
+          <span class="skill-item">Random Forest</span>
+          <span class="skill-item">HuggingFace Transformers</span>
+          <span class="skill-item">CNNs</span>
+          <span class="skill-item">Transfer Learning</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Deployment</div>
+        <div class="skill-list">
+          <span class="skill-item">HuggingFace Spaces</span>
+          <span class="skill-item">Streamlit</span>
+          <span class="skill-item">Gradio</span>
+          <span class="skill-item">FastAPI</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-item">GitHub Pages</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Data Engineering</div>
+        <div class="skill-list">
+          <span class="skill-item">SAP Migration</span>
+          <span class="skill-item">Syniti</span>
+          <span class="skill-item">BODS</span>
+          <span class="skill-item">Alteryx</span>
+          <span class="skill-item">SQL</span>
+          <span class="skill-item">ETL Pipelines</span>
+          <span class="skill-item">LTMC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">// experience</div>
+    <h2>Where I've Worked</h2>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Data & ML Engineer</div>
+          <div class="exp-company">@ PwC India</div>
+        </div>
+        <div class="exp-period">Mar 2023 — Present</div>
+      </div>
+      <ul class="exp-list">
+        <li>Built an AI classification pipeline using <strong>LangChain + GPT-4o</strong> with deterministic override layer to assess legacy ABAP codebases for SAP S/4HANA migration — reducing consultant assessment from <strong>weeks to minutes</strong></li>
+        <li>Engineered a <strong>4-level token-aware fallback system</strong> (full context → RAG retrieval → chunked summarization → LLM merge) using tiktoken + LangChain — ensuring zero pipeline failures on codebases of any size</li>
+        <li>Designed a <strong>dual RAG architecture</strong> using FAISS + OpenAI Embeddings — global store for cross-project retrieval and scoped per-module stores — auto-generating technical and functional spec docs as Word/Excel outputs</li>
+        <li>Diagnosed and resolved silent production upload failures caused by <strong>three compounding issues</strong> (middleware conflict, CORS preflight mishandling, read-only container FS) — restoring full functionality with zero data loss</li>
+        <li>Reduced <strong>LLM API costs</strong> via input-hash-based call caching, model tiering, and batched file classification — eliminating redundant API calls on repeat runs</li>
+      </ul>
+      <div class="clients-row">
+        <span class="client-tag">BioMarin</span>
+        <span class="client-tag">Kimberly-Clark</span>
+        <span class="client-tag">Rockwell Automation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">// contact</div>
+    <h2>Let's Build Something</h2>
+    <div class="contact-grid">
+      <a href="mailto:pravallipasala@gmail.com" class="contact-link">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">email</div>
+          <div class="contact-val">pravallipasala@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/pasala-pravallika0338491b8" class="contact-link" target="_blank">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">linkedin</div>
+          <div class="contact-val">pasala-pravallika</div>
+        </div>
+      </a>
+      <a href="https://github.com/Prav-allika" class="contact-link" target="_blank">
+        <div class="contact-icon">🐙</div>
+        <div>
+          <div class="contact-label">github</div>
+          <div class="contact-val">Prav-allika</div>
+        </div>
+      </a>
+      <a href="https://huggingface.co/spaces/Prav04" class="contact-link" target="_blank">
+        <div class="contact-icon">🤗</div>
+        <div>
+          <div class="contact-label">huggingface</div>
+          <div class="contact-val">Prav04</div>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>Pravallika Pasala · ML Engineer · Hyderabad, India · Updated May 2026</p>
+</footer>
+
+</body>
+</html>
